@@ -1,0 +1,135 @@
+.text-title-heard {
+	font-weight: bold;
+	text-shadow: 0px 2px 4px 0px rgba(0, 0, 0, .1);
+	margin: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+	body {
+		background-color: white;
+	}
+
+	.btn-scan-qr {
+		transform: rotateY(-100%);
+	}
+
+	.display-box {
+		position: absolute;
+		margin: auto;
+		background-color: white;
+		width: 100%;
+		top: 30%;
+		left: 50%;
+
+		display: flexbox;
+		align-items: center;
+		flex-direction: column;
+		padding: 10px;
+		text-align: center;
+		transform: translate(-50%, -50%);
+		border-radius: 3px;
+		height: auto;
+		padding: 15px;
+	}
+}
+
+@media only screen and (min-width: 600px) {
+	.display-box {
+		position: absolute;
+		margin: auto;
+		background-color: white;
+		width: 40%;
+		top: 30%;
+		left: 50%;
+		display: flexbox;
+		align-items: center;
+		flex-direction: column;
+		padding: 10px;
+		text-align: center;
+		transform: translate(-50%, -50%);
+		border-radius: 3px;
+		box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, .1);
+		height: auto;
+		padding: 15px;
+	}
+
+}
+
+.btn-scan-qr {
+	background-color: yellowgreen;
+	border-radius: 4px;
+	width: 100%;
+	height: 45px;
+	border: none;
+	color: #FFF;
+    font-weight: bold;
+    outline: none !important;
+}
+
+.img-icon-preview img {
+	width: 125px;
+	height: 125px;
+	top: -10%;
+	left: 125px;
+	margin: 15px;
+}
+
+.modal-content {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border-radius: 4px;
+	z-index: 2;
+	background-color: rgba(0, 0, 0, 0.95);
+	padding: 4px;
+	margin: 0;
+	left: 0;
+	transform: translate(0%, 0%);
+}
+
+.close {
+	position: absolute;
+	right: 38px;
+	top: 38px;
+	width: 38px;
+	height: 38px;
+	opacity: 0.3;
+	z-index: 99;
+}
+
+.close:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.close:before,
+.close:after {
+	position: absolute;
+	left: 15px;
+	content: " ";
+	height: 33px;
+	width: 2px;
+	background-color: rgb(255, 255, 255);
+}
+
+.close:before {
+	transform: rotate(45deg);
+}
+
+.close:after {
+	transform: rotate(-45deg);
+}
+
+.dispaly-scan {
+	width: 99%;
+	height: 99%;
+}
+
+.decode-result {
+	color: #fff;
+}
+
+.error {
+	font-weight: bold;
+	color: red;
+}
