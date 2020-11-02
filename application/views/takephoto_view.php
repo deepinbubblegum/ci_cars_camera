@@ -22,7 +22,7 @@
     </div>
     <div class="container-fluid mb-5">
         <div class="row">
-            <div class="column image-preview">
+            <!-- <div class="column image-preview">
                 <img class="image_souce" src="https://www.w3schools.com/howto/img_nature.jpg" alt="Nature" style="width:100%">
             </div>
             <div class="column image-preview">
@@ -33,11 +33,13 @@
             </div>
             <div class="column image-preview">
                 <img class="image_souce" src="https://www.w3schools.com/howto/img_lights.jpg" alt="Lights" style="width:100%">
-            </div>
-            
+            </div> -->
+
+
+
         </div>
     </div>
-    <button class="btn btn-block fixed-bottom btn-my-sty" hidden>Take a Photo</button>
+    <button class="btn btn-block fixed-bottom btn-my-sty" >Take a Photo</button>
     <div class="btn-group fixed-bottom" role="group" aria-label="Basic example">
         <button type="button" id="confirm-btn" class="btn btn-my-sty border">New</button>
         <button type="button" id="confirm-btn-save" class="btn btn-my-sty border">Save</button>
