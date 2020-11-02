@@ -11,8 +11,9 @@
 
 <body>
     <div style="text-align:center">
-        <h3>Gallery</h3>
-        <p>ID:</p>
+        <h3>Gallery ID</h3>
+        <p class="carid_id"><?= $carid_id ?></p>
+        <p class="size_small" hidden><?= $size_small ?></p>
     </div>
     <div class="container-image-preview">
         <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
@@ -33,32 +34,7 @@
             <div class="column image-preview">
                 <img class="image_souce" src="https://www.w3schools.com/howto/img_lights.jpg" alt="Lights" style="width:100%">
             </div>
-
-            <div class="column image-preview">
-                <img class="image_souce" src="https://www.w3schools.com/howto/img_nature.jpg" alt="Nature" style="width:100%">
-            </div>
-            <div class="column image-preview">
-                <img class="image_souce" src="https://www.w3schools.com/howto/img_snow.jpg" alt="Snow" style="width:100%">
-            </div>
-            <div class="column image-preview">
-                <img class="image_souce" src="https://www.w3schools.com/howto/img_mountains.jpg" alt="Mountains" style="width:100%">
-            </div>
-            <div class="column image-preview">
-                <img class="image_souce" src="https://www.w3schools.com/howto/img_lights.jpg" alt="Lights" style="width:100%">
-            </div>
-
-            <div class="column image-preview">
-                <img class="image_souce" src="https://www.w3schools.com/howto/img_nature.jpg" alt="Nature" style="width:100%">
-            </div>
-            <div class="column image-preview">
-                <img class="image_souce" src="https://www.w3schools.com/howto/img_snow.jpg" alt="Snow" style="width:100%">
-            </div>
-            <div class="column image-preview">
-                <img class="image_souce" src="https://www.w3schools.com/howto/img_mountains.jpg" alt="Mountains" style="width:100%">
-            </div>
-            <div class="column image-preview">
-                <img class="image_souce" src="https://www.w3schools.com/howto/img_lights.jpg" alt="Lights" style="width:100%">
-            </div>
+            
         </div>
     </div>
     <button class="btn btn-block fixed-bottom btn-my-sty" hidden>Take a Photo</button>
@@ -88,7 +64,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Plass confirm for save Image</h5>
+                    <h5 class="modal-title">Plass confirm save Image</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
