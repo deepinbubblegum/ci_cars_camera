@@ -3,9 +3,6 @@ $(document).ready(function () {
     $('.display-preview-camera').hide();
 
 
-    
-
-
     $('.close').click(function (e) { 
         e.preventDefault();
         $('.display-preview-camera').hide();
