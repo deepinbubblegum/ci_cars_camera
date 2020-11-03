@@ -52,9 +52,17 @@
         </div>
         <h1>Success</h1>
         <p>
-            <button class="btn btn-block my-sty-btn btn-primary m-2">Back ScanQR Code</button>
+            <button class="btn btn-block my-sty-btn btn-primary m-2" onclick="gotoqrpage()" >New ScanQR Code</button>
         </p>
     </div>
+    <script>
+        setTimeout(() => {
+            gotoqrpage();
+        }, 5000);
+        function gotoqrpage(){
+            window.location.href = '../';
+        }
+    </script>
 </body>
 
 </html>

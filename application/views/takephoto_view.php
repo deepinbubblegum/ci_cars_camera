@@ -21,30 +21,17 @@
         <div id="imgtext"></div>
     </div>
     <div class="container-fluid mb-5">
-        <div class="row">
-            <!-- <div class="column image-preview">
-                <img class="image_souce" src="https://www.w3schools.com/howto/img_nature.jpg" alt="Nature" style="width:100%">
-            </div>
-            <div class="column image-preview">
-                <img class="image_souce" src="https://www.w3schools.com/howto/img_snow.jpg" alt="Snow" style="width:100%">
-            </div>
-            <div class="column image-preview">
-                <img class="image_souce" src="https://www.w3schools.com/howto/img_mountains.jpg" alt="Mountains" style="width:100%">
-            </div>
-            <div class="column image-preview">
-                <img class="image_souce" src="https://www.w3schools.com/howto/img_lights.jpg" alt="Lights" style="width:100%">
-            </div> -->
-
-
-
+        <div class="row" id="rowshow_img">
+            
         </div>
     </div>
-    <button class="btn btn-block fixed-bottom btn-my-sty" >Take a Photo</button>
-    <div class="btn-group fixed-bottom" role="group" aria-label="Basic example">
+    <button class="btn btn-block fixed-bottom btn-my-sty" id="btn_take_a_photo">Take a Photo</button>
+    <div class="btn-group fixed-bottom" id="btn_group_ag" role="group" aria-label="Basic example">
         <button type="button" id="confirm-btn" class="btn btn-my-sty border">New</button>
-        <button type="button" id="confirm-btn-save" class="btn btn-my-sty border">Save</button>
+        <button type="button" id="add-image-manual" class="btn btn-my-sty border">Takephoto manual</button>
+        <button type="button" id="confirm-btn-save" class="btn btn-my-sty border">Next</button>
     </div>
-
+    <input type="file" id="input_image" accept="image/*" capture=camera" style="display: none;">
     <div class="modal" id="confirm-box" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -55,7 +42,7 @@
                     </button>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Take again</button>
+                    <button type="button" class="btn btn-primary" id="Take_again">Take again</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
@@ -66,13 +53,13 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Plass confirm save Image</h5>
+                    <h5 class="modal-title">Plass confirm</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Save</button>
+                    <button type="button" class="btn btn-primary" id="next_page">Next</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
