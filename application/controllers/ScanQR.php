@@ -138,6 +138,7 @@ class ScanQR extends CI_Controller
 					$img->writeImage($target_path_small . "\\" . $data_path . "\\" . $temp_id . '\\' . $output);
 				}
 			}
+			$this->logs_temp($temp_id);
 			echo json_encode(['messages' => true]);
 		} catch (\Throwable $th) {
 			echo json_encode(['messages' => false]);
@@ -193,5 +194,89 @@ class ScanQR extends CI_Controller
 		$this->load->view('template/header_view');
 		$this->load->view('Success_view');
 		$this->load->view('template/footer_view');
+	}
+
+	private function logs_temp($qr_id_log)
+	{
+		$data_path = date("dmY");
+		$target_path_temp_logs = 'D:\Images\logs\temp';
+		$filename = $target_path_temp_logs.'\\'.$data_path.'_tmp.csv';
+		if (!is_file($filename)){
+			$file = fopen($filename,"w");
+			fclose($file);
+		}
+		// The nested array to hold all the arrays
+		$the_big_array = [];
+		// Open the file for reading
+		if (($h = fopen("{$filename}", "r")) !== FALSE) {
+			// Each line in the file is converted into an individual array that we call $data
+			// The items of the array are comma separated
+			while (($data = fgetcsv($h, 1000, ",")) !== FALSE) {
+				// Each individual array is being pushed into the nested array
+				$the_big_array[] = $data;
+			}
+			// Close the file
+			fclose($h);
+		}
+		// array_push($the_big_array, array('3','IMAT000000000001363073', 'time', 'admin'));
+		// $this->log_file_csv($the_big_array);
+		// echo sizeof($the_big_array);
+
+		if (($l = fopen("{$filename}", "a")) !== FALSE) {
+			$line = array(
+				array((sizeof($the_big_array) + 1), $qr_id_log, date("d-m-Y H:i:s"), $this->session->userdata('username'))
+			);
+			foreach ($line as $fields) {
+				fputcsv($l, $fields);
+			}
+			fclose($l);
+		}
+		$this->log_file_csv();
+		// // Display the code in a readable format
+		// echo "<pre>";
+		// array_push($the_big_array, array('3','IMAT000000000001363073', 'time', 'admin'));
+		// print_r($the_big_array);
+		// echo "</pre>";
+	}
+
+	private function log_file_csv()
+	{
+		$target_path_large = 'D:\Images\large';
+		$target_path_temp_logs = 'D:\Images\logs\temp';
+		$target_path = 'D:\Images';
+		$data_path = date("dmY");
+		$filename = $target_path_temp_logs.'\\'.$data_path.'_tmp.csv';
+		$the_big_array = [];
+		// Open the file for reading
+		if (($h = fopen("{$filename}", "r")) !== FALSE) {
+			// Each line in the file is converted into an individual array that we call $data
+			// The items of the array are comma separated
+			while (($data = fgetcsv($h, 1000, ",")) !== FALSE) {
+				// Each individual array is being pushed into the nested array
+				$the_big_array[] = $data;
+			}
+			// Close the file
+			fclose($h);
+		}
+
+		$data_date_time = date("d-m-Y H:i:s");
+		$header_csv = array(
+			array('Last', $data_date_time),
+			array('Total',  sizeof($the_big_array)),
+			array('#', 'ID', 'DateTime', 'UserID')
+		);
+
+		$fp = fopen($target_path . '\\logs\\' . $data_path . '.csv', 'w');
+		foreach ($header_csv as $fields) {
+			fputcsv($fp, $fields);
+		}
+		fclose($fp);
+
+		if (($l = fopen($target_path . '\\logs\\' . $data_path . '.csv', "a")) !== FALSE) {
+			foreach ($the_big_array as $fields) {
+				fputcsv($l, $fields);
+			}
+			fclose($l);
+		}
 	}
 }
