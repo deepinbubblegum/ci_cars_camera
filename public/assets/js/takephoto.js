@@ -28,6 +28,7 @@ $(function () {
 	fristTime();
 
 	function fristTime() {
+		$("#loadingModal").modal("show");
 		$.ajax({
 			type: "POST",
 			url: '../../get_all_filename',
@@ -51,6 +52,9 @@ $(function () {
 					hidebtn();
 				}, 1500);
 				$('#rowshow_img').html(htmlString);
+				setTimeout(() => {
+					$("#loadingModal").modal("hide");
+				}, 1000);
 				image_souce();
 			}
 		});
@@ -60,6 +64,7 @@ $(function () {
 		if (have_img) {
 			$('#btn_take_a_photo').hide();
 			$('#btn_group_ag').show();
+			
 		} else {
 			$('#btn_group_ag').hide();
 			$('#btn_take_a_photo').show();
@@ -68,12 +73,14 @@ $(function () {
 
 	$('#btn_take_a_photo').click(function (e) {
 		e.preventDefault();
-        take_a_photo_udp();
+		take_a_photo_udp();
+		loadingmodal();
 	});
 
 	$('#Take_again').click(function (e) {
 		e.preventDefault();
 		take_a_photo_udp();
+		loadingmodal();
 	});
 
 	function take_a_photo_udp() {
@@ -149,5 +156,9 @@ $(function () {
                 }, 100);
             }
         });
-    });
+	});
+	
+	function loadingmodal(){
+		$("#loadingModal").modal("toggle");
+	 }
 });

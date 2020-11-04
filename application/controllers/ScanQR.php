@@ -207,6 +207,7 @@ class ScanQR extends CI_Controller
 		}
 		// The nested array to hold all the arrays
 		$the_big_array = [];
+		
 		// Open the file for reading
 		if (($h = fopen("{$filename}", "r")) !== FALSE) {
 			// Each line in the file is converted into an individual array that we call $data
@@ -218,6 +219,12 @@ class ScanQR extends CI_Controller
 			// Close the file
 			fclose($h);
 		}
+
+		// echo "<pre>";
+		// print_r($the_big_array);
+		// echo "</pre>";
+
+		// $this->unique_imat($the_big_array);
 		// array_push($the_big_array, array('3','IMAT000000000001363073', 'time', 'admin'));
 		// $this->log_file_csv($the_big_array);
 		// echo sizeof($the_big_array);
@@ -259,11 +266,18 @@ class ScanQR extends CI_Controller
 			fclose($h);
 		}
 
+		$data_qrID = [];
+		for ($i=0; $i < sizeof($the_big_array); $i++) { 
+			array_push($data_qrID, $the_big_array[$i][1]);
+		}
+		$couting_qrID = sizeof(array_unique($data_qrID));
+
 		$data_date_time = date("d-m-Y H:i:s");
 		$header_csv = array(
 			array('Last', $data_date_time),
 			array('Total',  sizeof($the_big_array)),
-			array('#', 'ID', 'DateTime', 'UserID')
+			array('Total-IMAT', $couting_qrID),
+			array('#', 'ID', 'DateTime', 'By User')
 		);
 
 		$fp = fopen($target_path . '\\logs\\' . $data_path . '.csv', 'w');

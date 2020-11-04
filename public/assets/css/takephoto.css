@@ -56,20 +56,39 @@ body {
 	cursor: pointer;
 }
 
-.btn-my-sty{
-    background-color: yellowgreen;
-    font-weight: bold;
-    color: white;
-    width: 100%;
+.btn-my-sty {
+	background-color: yellowgreen;
+	font-weight: bold;
+	color: white;
+	width: 100%;
 	height: 50px;
 	border-radius: 0;
 }
 
-.border{
+.border {
 	border: 1px solid;
 }
 
-.btn-my-sty:hover{
+.btn-my-sty:hover {
 	color: white;
 	background-color: rgba(153, 205, 50, 0.849);
+}
+
+.bd-example-modal-lg .modal-dialog {
+	display: table;
+	position: relative;
+	margin: 0 auto;
+	top: calc(50% - 24px);
+}
+
+.bd-example-modal-lg .modal-dialog {
+	display: table;
+	position: relative;
+	margin: 0 auto;
+	top: calc(50% - 24px);
+}
+
+.bd-example-modal-lg .modal-dialog .modal-content {
+	background-color: transparent;
+	border: none;
 }

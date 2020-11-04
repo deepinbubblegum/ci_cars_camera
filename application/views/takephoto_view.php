@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Take a Photo</title>
     <link rel="stylesheet" href="<?= base_url('public/assets/css/takephoto.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('public/assets/fontawesome/css/all.css') ?> " rel="stylesheet">
     <script src="<?= base_url('public/assets/js/takephoto.js') ?>"></script>
 </head>
 
@@ -22,7 +23,7 @@
     </div>
     <div class="container-fluid mb-5">
         <div class="row" id="rowshow_img">
-            
+
         </div>
     </div>
     <button class="btn btn-block fixed-bottom btn-my-sty" id="btn_take_a_photo">Take a Photo</button>
@@ -65,6 +66,13 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="loadingModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+            <span class="fa fa-spinner fa-spin fa-3x"></span>
+        </div>
+    </div>
+
 
 </body>
 
