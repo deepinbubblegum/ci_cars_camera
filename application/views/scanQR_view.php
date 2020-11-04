@@ -26,7 +26,7 @@
             </div>
             <div class="custom-control custom-switch m-2">
                 <input type="checkbox" class="custom-control-input" id="Swicth-option-size-img" checked>
-                <label class="custom-control-label" for="Swicth-option-size-img">Resize Pictures small</label>
+                <label class="custom-control-label" for="Swicth-option-size-img">Resize Pictures to small size</label>
             </div>
             <button class="btn-scan-qr" id="btn_send_scanqr"><i class="fas fa-qrcode mr-2"></i> SCAN</button>
         </div>
