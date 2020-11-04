@@ -58,7 +58,7 @@ class ScanQR extends CI_Controller
 					// $image = $upload_path;
 					sleep(0.2);
 					if ($option_resize) {
-						$output = str_replace('.jpg', '_640x480.jpg', $temp_id . '_' . $outputfilename . '.' . $extension);
+						$output = str_replace('.jpg', '_640x480.jpg', $outputfilename . '.' . $extension);
 						$img = new Imagick();
 						$img->readImage($target_path_large . "\\" . $data_path . "\\" . $temp_id . "\\" . $outputfilename . '.' . $extension);
 						$img->setImageUnits(imagick::RESOLUTION_PIXELSPERINCH);
