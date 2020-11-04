@@ -56,7 +56,7 @@
                     <form>
                         <div class="form-group">
                             <small for="username">Username</small>
-                            <input type="email" class="form-control" placeholder="username" id="username>
+                            <input type="email" class="form-control" placeholder="username" id="username">
                         </div>
                         <div class="form-group">
                             <small for="password-register">Password</small>
