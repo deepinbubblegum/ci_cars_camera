@@ -16,9 +16,4 @@ class Signin_model extends CI_Model {
 
     }
 
-    public function user_register()
-    {
-        # code...
-    }
-
 }

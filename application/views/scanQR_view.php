@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>ScanQR Code</title>
     <link rel="stylesheet" href="<?= base_url('public/assets/css/style_scanqr.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('public/assets/fontawesome/css/all.css') ?> " rel="stylesheet">
     <script type="text/javascript" src="<?= base_url('public/assets/qrcode/jsQR.js') ?>"></script>
 
 </head>
@@ -13,6 +14,12 @@
 <body>
     <div class="container-fluid">
         <div class="display-box">
+            <nav class="navbar navbar-light bg-light justify-content-between">
+                <a class="navbar-brand"><img src="<?= base_url('public/assets/img/example.png') ?>" width="32px"></a>
+                <form class="form-inline">
+                    <a class="btn btn btn-info my-2 my-sm-0" href="<?= base_url('signout') ?>" type="logout"><i class="fas fa-sign-out-alt mr-2"></i>SIGN OUT</a>
+                </form>
+            </nav>
             <h3 class="text-title-heard">ScanQR Code</h3>
             <div class="img-icon-preview">
                 <img class="image_qr_show" id="example" src="<?= base_url('public/assets/img/example.png') ?>" alt="example">
@@ -21,7 +28,7 @@
                 <input type="checkbox" class="custom-control-input" id="Swicth-option-size-img" checked>
                 <label class="custom-control-label" for="Swicth-option-size-img">Resize Pictures small</label>
             </div>
-            <button class="btn-scan-qr" id="btn_send_scanqr">SCAN</button>
+            <button class="btn-scan-qr" id="btn_send_scanqr"><i class="fas fa-qrcode mr-2"></i> SCAN</button>
         </div>
         <div class="display-preview-camera">
             <div class="modal-content">
