@@ -24,22 +24,7 @@
                 <th scope="col">Options</th>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td style="align-items: center;"><button type="button" class="btn btn-danger mx-auto"><i class="fas fa-trash-alt"></i></button></td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Jacob</td>
-                <td>Jacob</td>
-            </tr>
+        <tbody id="tr-display">
         </tbody>
     </table>
 

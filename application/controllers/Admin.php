@@ -20,6 +20,17 @@ class Admin extends CI_Controller {
 
     public function getUser()
     {
+        $this->load->model('Usermanager_model');
+        $user_data = $this->Usermanager_model->getUserModel();
+        echo json_encode(['messages' => $user_data]);
+    }
+
+    public function delect_user()
+    {
+        $this->input->post('userid');
+        $this->load->model('Usermanager_model');
+        $user_data = $this->Usermanager_model->delete_user_model($this->input->post('userid'));
+        echo json_encode(['messages' => true]);
 
     }
 
