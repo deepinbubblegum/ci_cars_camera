@@ -61,8 +61,9 @@ $(document).ready(function () {
 				if (code.data != "" && !waiting && TLR == true && TRR == true && BRL == true && BLL == true) {
                     console.log(code.data);
                     code.data = encodeURI(code.data);
-                    resize_small = encodeURI(resize_small);
-                    window.location.href = `./scanqr/takephoto/${code.data}/${resize_small}`;
+					resize_small = encodeURI(resize_small);
+					// console.log();
+                    window.location.href = `./scanqr/takephoto/${code.data.padStart(6, "0")}/${resize_small}`;
 					// สามารถส่งค่า code.data ไปทำงานอย่างอื่นๆ ผ่าน ajax ได้
 					video.pause();
 					beepsound.play();
