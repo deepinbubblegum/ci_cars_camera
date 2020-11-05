@@ -15,6 +15,14 @@ $(function () {
 			expandImg.src = imgs.src;
 			imgText.innerHTML = imgs.alt;
 			$('.delete_icon_image').attr('file-id', imgs.alt);
+			let id_sp = imgs.alt.split('_');
+			let id_sp_img = id_sp[1].split('.');
+			if (id_sp_img[0] >= 9){
+				$('.delete_icon_image').show();
+			}else{
+				$('.delete_icon_image').hide();
+			}
+			console.log(id_sp_img);
 			expandImg.parentElement.style.display = "block";
 		});
 	}

@@ -11,7 +11,7 @@
     <style>
         .delete_icon_image{
             position: absolute;
-            color: white;
+            color: whitesmoke;
             font-size: 25px;
             cursor: pointer;
             top: 20px;

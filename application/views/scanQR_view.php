@@ -31,7 +31,7 @@
             <div class="img-icon-preview">
                 <img class="image_qr_show" id="example" src="<?= base_url('public/assets/img/example.png') ?>" alt="example">
             </div>
-            <div class="custom-control custom-switch m-2">
+            <div class="custom-control custom-switch m-2" hidden>
                 <input type="checkbox" class="custom-control-input" id="Swicth-option-size-img" checked>
                 <label class="custom-control-label" for="Swicth-option-size-img">Resize Pictures to small size</label>
             </div>
