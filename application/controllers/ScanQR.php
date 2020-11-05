@@ -293,4 +293,21 @@ class ScanQR extends CI_Controller
 			fclose($l);
 		}
 	}
+
+	public function delete_img()
+	{
+		$image_id = $this->input->post('delete_id');
+		$dir_path = $this->input->post('dir_path');
+		$target_path_small = 'D:\Images\small';
+		$target_path_large = 'D:\Images\large';
+		$data_path = date("dmY");
+		if (unlink($target_path_large."\\". $data_path. "\\" . $dir_path ."\\". $image_id)){
+			$output = str_replace('.jpg', '_640x480.jpg', $image_id);
+			unlink($target_path_small."\\". $data_path. "\\" . $dir_path ."\\". $output);
+			echo json_encode(['mesagess' => true]);
+		}else{
+			echo json_encode(['mesagess' => false]);
+		}
+		
+	}
 }

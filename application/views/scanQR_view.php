@@ -17,7 +17,14 @@
             <nav class="navbar navbar-light bg-light justify-content-between">
                 <a class="navbar-brand"><img src="<?= base_url('public/assets/img/example.png') ?>" width="32px"></a>
                 <form class="form-inline">
-                    <a class="btn btn btn-info my-2 my-sm-0" href="<?= base_url('signout') ?>" type="logout"><i class="fas fa-sign-out-alt mr-2"></i>SIGN OUT</a>
+                    <div class="dropdown">
+                        <button class="btn btn-info my-2 my-sm-0 dropdown-toggle text-uppercase" type="button" id="user_dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-user-circle mr-2"></i> <?= $this->session->username; ?>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="user_dropdown">
+                            <a class="dropdown-item" href="<?= base_url('signout') ?>"><i class="fas fa-sign-out-alt"></i>SIGN OUT</a>
+                        </div>
+                    </div>
                 </form>
             </nav>
             <h3 class="text-title-heard">ScanQR Code</h3>

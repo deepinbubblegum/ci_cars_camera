@@ -8,18 +8,40 @@
     <link rel="stylesheet" href="<?= base_url('public/assets/css/takephoto.css') ?>">
     <link rel="stylesheet" href="<?= base_url('public/assets/fontawesome/css/all.css') ?> " rel="stylesheet">
     <script src="<?= base_url('public/assets/js/takephoto.js') ?>"></script>
+    <style>
+        .delete_icon_image{
+            position: absolute;
+            color: white;
+            font-size: 25px;
+            cursor: pointer;
+            top: 20px;
+            left: 15px;
+        }
+    </style>
 </head>
 
 <body>
+    <nav class="navbar navbar-light bg-light justify-content-between">
+        <a class="navbar-brand carid_id">IMAT ID: <?= $carid_id ?></a>
+        <form class="form-inline">
+            <div class="dropdown">
+                <button class="btn btn-info my-2 my-sm-0 dropdown-toggle text-uppercase" type="button" id="user_dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-user-circle mr-2"></i> <?= $this->session->username; ?>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="user_dropdown">
+                    <a class="dropdown-item" href="<?= base_url('signout') ?>"><i class="fas fa-sign-out-alt"></i>SIGN OUT</a>
+                </div>
+            </div>
+        </form>
+    </nav>
     <div style="text-align:center">
-        <h3>Gallery ID</h3>
-        <p class="carid_id"><?= $carid_id ?></p>
         <p class="size_small" hidden><?= $size_small ?></p>
     </div>
     <div class="container-image-preview">
         <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
         <img id="expandedImg" style="width:100%">
         <div id="imgtext"></div>
+        <span class="delete_icon_image"><i class="far fa-trash-alt"></i></span>
     </div>
     <div class="container-fluid mb-5">
         <div class="row" id="rowshow_img">
@@ -60,7 +82,7 @@
                     </button>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="next_page">Next</button>
+                    <button type="button" class="btn btn-primary" id="next_page">Finish</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>

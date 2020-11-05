@@ -14,6 +14,7 @@ $(function () {
 			let imgText = $('#imgtext')[0];
 			expandImg.src = imgs.src;
 			imgText.innerHTML = imgs.alt;
+			$('.delete_icon_image').attr('file-id', imgs.alt);
 			expandImg.parentElement.style.display = "block";
 		});
 	}
@@ -160,5 +161,29 @@ $(function () {
 	
 	function loadingmodal(){
 		$("#loadingModal").modal("toggle");
-	 }
+	}
+
+	$('.delete_icon_image').click( function (e) {
+		let delete_id = $(this).attr('file-id');
+		if (confirm(`Are you sure you want to delete this file : ${delete_id}`)){
+			$.ajax({
+				type: "POST",
+				url: "../../delete_img",
+				data: {
+					delete_id:delete_id,
+					dir_path:path_name[4]
+				},
+				dataType: "json",
+				success: function (response) {
+					console.log(response.mesagess);
+					if(response.mesagess){
+						setTimeout(() => {
+							fristTime();
+							$('.closebtn').click();
+						}, 100);
+					}
+				}
+			});
+		}
+	});
 });
