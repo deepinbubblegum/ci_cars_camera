@@ -28,9 +28,9 @@
     </div>
     <button class="btn btn-block fixed-bottom btn-my-sty" id="btn_take_a_photo">Take a Photo</button>
     <div class="btn-group fixed-bottom" id="btn_group_ag" role="group" aria-label="Basic example">
-        <button type="button" id="confirm-btn" class="btn btn-my-sty border">New</button>
-        <button type="button" id="add-image-manual" class="btn btn-my-sty border">Takephoto manual</button>
-        <button type="button" id="confirm-btn-save" class="btn btn-my-sty border">Next</button>
+        <button type="button" id="confirm-btn" class="btn btn-my-sty border">Re take</button>
+        <button type="button" id="add-image-manual" class="btn btn-my-sty border">Add Photo</button>
+        <button type="button" id="confirm-btn-save" class="btn btn-my-sty border">Finish</button>
     </div>
     <input type="file" id="input_image" accept="image/*" capture=camera" style="display: none;">
     <div class="modal" id="confirm-box" tabindex="-1" role="dialog">

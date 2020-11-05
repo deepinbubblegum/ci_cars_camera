@@ -40,7 +40,7 @@ class ScanQR extends CI_Controller
 		$target_path_small = 'D:\Images\small';
 		$option_resize = $this->input->post('option_resize');
 		$data_path = date("dmY");
-		$temp_id = 'IMAT' . $this->input->post('path_image');
+		$temp_id = $this->input->post('path_image');
 		$get_all_file_in_Path = $target_path_large . '\\' . $data_path . '\\' . $temp_id;
 		$files_name = array_diff(scandir($get_all_file_in_Path, 1), array('..', '.'));
 		$value = str_pad((sizeof($files_name) + 1), 2, "0", STR_PAD_LEFT);
@@ -91,7 +91,7 @@ class ScanQR extends CI_Controller
 			// $rootPath = $_SERVER['DOCUMENT_ROOT'];
 
 			$option_resize = $this->input->post('option_resize');
-			$temp_id = 'IMAT' . $this->input->post('qr_id');
+			$temp_id = $this->input->post('qr_id');
 			$source_path = 'C:\test_franchise\bin\01SFXinput';
 			$target_path_small = 'D:\Images\small';
 			$target_path_large = 'D:\Images\large';
@@ -152,7 +152,7 @@ class ScanQR extends CI_Controller
 			$qr_id = $this->input->post('qr_id');
 			$data_path = date("dmY");
 			$target_path_large = 'D:\Images\large';
-			$files_name = array_diff(scandir($target_path_large . '\\' . $data_path . '\\IMAT' . $qr_id, 1), array('..', '.'));
+			$files_name = array_diff(scandir($target_path_large . '\\' . $data_path . '\\' . $qr_id, 1), array('..', '.'));
 			echo json_encode(['messages' => $files_name]);
 		} catch (\Throwable $th) {
 			echo json_encode(['messages' => 'error']);
@@ -164,7 +164,7 @@ class ScanQR extends CI_Controller
 		error_reporting(E_ERROR | E_PARSE);
 		$data_path = date("dmY");
 		$target_path_large = 'D:\Images\large';
-		$filename = $target_path_large . '\\' . $data_path . '\\IMAT' . $path_id . '\\' . $imagename;
+		$filename = $target_path_large . '\\' . $data_path . '\\' . $path_id . '\\' . $imagename;
 		$handle = fopen($filename, "rb");
 		$contents = fread($handle, filesize($filename));
 		fclose($handle);
@@ -225,7 +225,7 @@ class ScanQR extends CI_Controller
 		// echo "</pre>";
 
 		// $this->unique_imat($the_big_array);
-		// array_push($the_big_array, array('3','IMAT000000000001363073', 'time', 'admin'));
+		// array_push($the_big_array, array('3','000000000001363073', 'time', 'admin'));
 		// $this->log_file_csv($the_big_array);
 		// echo sizeof($the_big_array);
 
@@ -241,7 +241,7 @@ class ScanQR extends CI_Controller
 		$this->log_file_csv();
 		// // Display the code in a readable format
 		// echo "<pre>";
-		// array_push($the_big_array, array('3','IMAT000000000001363073', 'time', 'admin'));
+		// array_push($the_big_array, array('3','000000000001363073', 'time', 'admin'));
 		// print_r($the_big_array);
 		// echo "</pre>";
 	}
