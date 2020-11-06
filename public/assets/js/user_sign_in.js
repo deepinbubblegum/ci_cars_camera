@@ -10,7 +10,7 @@ $(document).ready(function () {
             dataType: "json",
             success: function (response) {
                 console.log(response);
-                if(!response){
+                if(!response.message){
                     alert('Username or Password don\'t match');
                 }else{
                     location.reload();

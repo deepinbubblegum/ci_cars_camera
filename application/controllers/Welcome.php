@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Welcome extends CI_Controller
+class Welcome extends GMC_Controller
 {
 	public function __construct()
 	{
@@ -10,6 +10,8 @@ class Welcome extends CI_Controller
 			redirect('ScanQR', 'refresh');
 		};
 	}
+
+
 
 	public function index()
 	{
