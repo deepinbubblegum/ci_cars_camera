@@ -11,8 +11,6 @@ class Welcome extends GMC_Controller
 		};
 	}
 
-
-
 	public function index()
 	{
 

@@ -60,7 +60,8 @@ $(document).ready(function () {
 				outputData.innerText = code.data;
 				if (code.data != "" && !waiting && TLR == true && TRR == true && BRL == true && BLL == true) {
                     console.log(code.data);
-                    code.data = encodeURI(code.data);
+					code.data = parseInt(code.data);
+					code.data = code.data.toString();
 					resize_small = encodeURI(resize_small);
 					// console.log();
                     window.location.href = `./scanqr/takephoto/${code.data.padStart(6, "0")}/${resize_small}`;

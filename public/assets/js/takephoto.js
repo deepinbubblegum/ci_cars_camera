@@ -118,7 +118,11 @@ $(function () {
 			success: function (response) {
 				console.log(response)
 				if (!response.messages) {
-					alert('Error');
+					// if (confirm(`Can't prcess images plass try again`)){
+						setTimeout(() => {
+							process_image();
+						}, 1000);
+					// }
 				} else {
 					setTimeout(() => {
 						fristTime();

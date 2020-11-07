@@ -98,10 +98,10 @@ class ScanQR extends CI_Controller
 			$data_path = date("dmY");
 			$files_name = [];
 			while (sizeof($files_name) <= 7) {
-				sleep(0.2);
+				sleep(0.1);
 				$files_name = array_diff(scandir($source_path, 1), array('..', '.'));
 			}
-			sleep(0.2);
+			sleep(0.1);
 			if (!is_dir($target_path_large . "\\" . $data_path)) {
 				mkdir($target_path_large . "\\" . $data_path);
 			}
@@ -111,17 +111,16 @@ class ScanQR extends CI_Controller
 			}
 
 			for ($i = 0; $i < sizeof($files_name); $i++) {
-				sleep(0.2);
 				rename($source_path . "\\" . $files_name[$i], $target_path_large . "\\" . $data_path . "\\" . $temp_id . "\\" . $temp_id . '_' . $files_name[$i]);
 				if ($option_resize) {
 					if (!is_dir($target_path_small . "\\" . $data_path)) {
 						mkdir($target_path_small . "\\" . $data_path);
-						sleep(0.2);
+						sleep(0.1);
 					}
 
 					if (!is_dir($target_path_small . "\\" . $data_path . "\\" . $temp_id)) {
 						mkdir($target_path_small . "\\" . $data_path . "\\" . $temp_id);
-						sleep(0.2);
+						sleep(0.1);
 					}
 
 					$output = str_replace('.jpg', '_640x480.jpg', $temp_id . '_' . $files_name[$i]);
@@ -174,19 +173,14 @@ class ScanQR extends CI_Controller
 
 	public function take_a_photo_udp()
 	{
-		try {
-			$server = '127.0.0.1';
-			$port = 16000;
-			$msg = 'P';
-			$len = strlen($msg);
-			$sock = socket_create(AF_INET, SOCK_DGRAM, SOL_UDP);
-			socket_sendto($sock, $msg, $len, 0, $server, $port);
-			socket_close($sock);
-			sleep(1);
-			echo json_encode(['mesagess' => true]);
-		} catch (\Throwable $th) {
-			echo json_encode(['mesagess' => false]);
-		}
+		$server = '127.0.0.1';
+		$port = 16000;
+		$msg = 'P';
+		$len = strlen($msg);
+		$sock = socket_create(AF_INET, SOCK_DGRAM, SOL_UDP);
+		socket_sendto($sock, $msg, $len, 0, $server, $port);
+		socket_close($sock);
+		echo json_encode(['mesagess' => true]);
 	}
 
 	public function Success()
