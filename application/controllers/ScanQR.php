@@ -41,9 +41,35 @@ class ScanQR extends CI_Controller
 		$option_resize = $this->input->post('option_resize');
 		$data_path = date("dmY");
 		$temp_id = $this->input->post('path_image');
+
+		if (!is_dir($target_path_large . "\\" . $data_path)) {
+			mkdir($target_path_large . "\\" . $data_path);
+		}
+
+		if (!is_dir($target_path_large . "\\" . $data_path . "\\" . $temp_id)) {
+			mkdir($target_path_large . "\\" . $data_path . "\\" . $temp_id);
+		}
+
+		if ($option_resize) {
+			if (!is_dir($target_path_small . "\\" . $data_path)) {
+				mkdir($target_path_small . "\\" . $data_path);
+				sleep(0.1);
+			}
+
+			if (!is_dir($target_path_small . "\\" . $data_path . "\\" . $temp_id)) {
+				mkdir($target_path_small . "\\" . $data_path . "\\" . $temp_id);
+				sleep(0.1);
+			}
+		}
+
 		$get_all_file_in_Path = $target_path_large . '\\' . $data_path . '\\' . $temp_id;
 		$files_name = array_diff(scandir($get_all_file_in_Path, 1), array('..', '.'));
-		$value = str_pad((sizeof($files_name) + 1), 2, "0", STR_PAD_LEFT);
+		if ((sizeof($files_name) <= 7)) {
+			$file_name_num = intval(sizeof($files_name)) + 8;
+		} else {
+			$file_name_num = intval(sizeof($files_name));
+		}
+		$value = str_pad(($file_name_num + 1), 2, "0", STR_PAD_LEFT);
 		$outputfilename = $temp_id . '_' . $value;
 
 		$image = '';
@@ -98,7 +124,7 @@ class ScanQR extends CI_Controller
 			$data_path = date("dmY");
 			$files_name = [];
 			while (sizeof($files_name) <= 7) {
-				sleep(0.1);
+				sleep(0.8);
 				$files_name = array_diff(scandir($source_path, 1), array('..', '.'));
 			}
 			sleep(0.1);
@@ -194,14 +220,14 @@ class ScanQR extends CI_Controller
 	{
 		$data_path = date("dmY");
 		$target_path_temp_logs = 'D:\Images\logs\temp';
-		$filename = $target_path_temp_logs.'\\'.$data_path.'_tmp.csv';
-		if (!is_file($filename)){
-			$file = fopen($filename,"w");
+		$filename = $target_path_temp_logs . '\\' . $data_path . '_tmp.csv';
+		if (!is_file($filename)) {
+			$file = fopen($filename, "w");
 			fclose($file);
 		}
 		// The nested array to hold all the arrays
 		$the_big_array = [];
-		
+
 		// Open the file for reading
 		if (($h = fopen("{$filename}", "r")) !== FALSE) {
 			// Each line in the file is converted into an individual array that we call $data
@@ -246,7 +272,7 @@ class ScanQR extends CI_Controller
 		$target_path_temp_logs = 'D:\Images\logs\temp';
 		$target_path = 'D:\Images';
 		$data_path = date("dmY");
-		$filename = $target_path_temp_logs.'\\'.$data_path.'_tmp.csv';
+		$filename = $target_path_temp_logs . '\\' . $data_path . '_tmp.csv';
 		$the_big_array = [];
 		// Open the file for reading
 		if (($h = fopen("{$filename}", "r")) !== FALSE) {
@@ -261,7 +287,7 @@ class ScanQR extends CI_Controller
 		}
 
 		$data_qrID = [];
-		for ($i=0; $i < sizeof($the_big_array); $i++) { 
+		for ($i = 0; $i < sizeof($the_big_array); $i++) {
 			array_push($data_qrID, $the_big_array[$i][1]);
 		}
 		$couting_qrID = sizeof(array_unique($data_qrID));
@@ -295,13 +321,12 @@ class ScanQR extends CI_Controller
 		$target_path_small = 'D:\Images\small';
 		$target_path_large = 'D:\Images\large';
 		$data_path = date("dmY");
-		if (unlink($target_path_large."\\". $data_path. "\\" . $dir_path ."\\". $image_id)){
+		if (unlink($target_path_large . "\\" . $data_path . "\\" . $dir_path . "\\" . $image_id)) {
 			$output = str_replace('.jpg', '_640x480.jpg', $image_id);
-			unlink($target_path_small."\\". $data_path. "\\" . $dir_path ."\\". $output);
+			unlink($target_path_small . "\\" . $data_path . "\\" . $dir_path . "\\" . $output);
 			echo json_encode(['mesagess' => true]);
-		}else{
+		} else {
 			echo json_encode(['mesagess' => false]);
 		}
-		
 	}
 }

@@ -139,3 +139,7 @@
 	width: 99%;
 	height: 90%;
 }
+
+#btn_send_scanqr:disabled{
+	background-color: rgb(202, 202, 202);
+}

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="<?= base_url('public/assets/fontawesome/css/all.css') ?> " rel="stylesheet">
     <script src="<?= base_url('public/assets/js/takephoto.js') ?>"></script>
     <style>
-        .delete_icon_image{
+        .delete_icon_image {
             position: absolute;
             color: whitesmoke;
             font-size: 25px;
@@ -48,10 +48,15 @@
 
         </div>
     </div>
-    <button class="btn btn-block fixed-bottom btn-my-sty" id="btn_take_a_photo">Take a Photo</button>
+
+    <div class="btn-group fixed-bottom btn-my-sty" id="btn_group_ag_frist" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-my-sty border add-image-manual">Add Photo</button>
+        <button class="btn btn-block fixed-bottom btn-my-sty" id="btn_take_a_photo">Take a Photo</button>
+    </div>
+    <!-- <button class="btn btn-block fixed-bottom btn-my-sty" id="btn_take_a_photo">Take a Photo</button> -->
     <div class="btn-group fixed-bottom" id="btn_group_ag" role="group" aria-label="Basic example">
         <button type="button" id="confirm-btn" class="btn btn-my-sty border">Re take</button>
-        <button type="button" id="add-image-manual" class="btn btn-my-sty border">Add Photo</button>
+        <button type="button" class="btn btn-my-sty border add-image-manual">Add Photo</button>
         <button type="button" id="confirm-btn-save" class="btn btn-my-sty border">Finish</button>
     </div>
     <input type="file" id="input_image" accept="image/*" capture=camera" style="display: none;">

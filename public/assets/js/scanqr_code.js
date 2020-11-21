@@ -65,7 +65,6 @@ $(document).ready(function () {
 					resize_small = encodeURI(resize_small);
 					// console.log();
                     window.location.href = `./scanqr/takephoto/${code.data.padStart(6, "0")}/${resize_small}`;
-					// สามารถส่งค่า code.data ไปทำงานอย่างอื่นๆ ผ่าน ajax ได้
 					video.pause();
 					beepsound.play();
 					beepsound.onended = function () {
@@ -121,5 +120,36 @@ $(document).ready(function () {
 			requestAnimationFrame(tick);
 		});
 
-    });
+	});
+	
+	$('#Swicth-option-mode').change(function (e) { 
+		e.preventDefault();
+		if($('#Swicth-option-mode').is(":checked")){
+			$('.Manual_Mode_option_elm').prop('disabled', false);
+			$('.Manual_Mode_option_scan').prop('disabled', true);
+			
+		}else{
+			$('.Manual_Mode_option_elm').prop('disabled', true);
+			$('.Manual_Mode_option_scan').prop('disabled', false);
+		}
+	});
+
+	$('#manual_code_btn').click(function (e) { 
+		e.preventDefault();
+		var manual_val = $('.input-Manual_Mode_option_elm').val();
+		if(manual_val *1 == 0){
+			alert('Please enter data in a Create a directory manual box');
+			return false;
+		}
+
+		if ($('#Swicth-option-size-img').is(":checked"))
+        {
+            resize_small = true;
+        }else{
+            resize_small = false;
+        }
+
+		window.location.href = `./scanqr/takephoto/${manual_val.padStart(6, "0")}/${resize_small}`;
+	});
+
 });

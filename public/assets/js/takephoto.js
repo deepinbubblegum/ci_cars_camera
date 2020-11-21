@@ -143,7 +143,7 @@ $(function () {
         window.location.href = '../../success';
     }
 
-    $('#add-image-manual').click(function (e) { 
+    $('.add-image-manual').click(function (e) { 
         e.preventDefault();
         $('#input_image').trigger('click');
     });

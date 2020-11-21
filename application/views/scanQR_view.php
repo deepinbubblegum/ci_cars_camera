@@ -27,7 +27,7 @@
                     </div>
                 </form>
             </nav>
-            <h3 class="text-title-heard">ScanQR Code</h3>
+            <h3 class="text-title-heard" >ScanQR Code</h3>
             <div class="img-icon-preview">
                 <img class="image_qr_show" id="example" src="<?= base_url('public/assets/img/example.png') ?>" alt="example">
             </div>
@@ -35,7 +35,19 @@
                 <input type="checkbox" class="custom-control-input" id="Swicth-option-size-img" checked>
                 <label class="custom-control-label" for="Swicth-option-size-img">Resize Pictures to small size</label>
             </div>
-            <button class="btn-scan-qr" id="btn_send_scanqr"><i class="fas fa-qrcode mr-2"></i> SCAN</button>
+
+            <div class="custom-control custom-switch m-2">
+                <input type="checkbox" class="custom-control-input" id="Swicth-option-mode">
+                <label class="custom-control-label" for="Swicth-option-mode">Swicth Manual Mode</label>
+            </div>
+
+            <div class="input-group mb-3">
+                <input type="number" class="form-control Manual_Mode_option_elm input-Manual_Mode_option_elm" disabled placeholder="Create a directory manual" aria-label="Create a directory manual" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary Manual_Mode_option_elm" id="manual_code_btn" disabled type="button">Submit</button>
+                </div>
+            </div>
+            <button class="btn-scan-qr Manual_Mode_option_scan"  id="btn_send_scanqr"><i class="fas fa-qrcode mr-2"></i> SCAN</button>
         </div>
         <div class="display-preview-camera">
             <div class="modal-content">
