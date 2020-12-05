@@ -82,7 +82,7 @@ class ScanQR extends CI_Controller
 				if (move_uploaded_file($_FILES['file']['tmp_name'], $upload_path)) {
 					// $message = 'Image Uploaded';
 					// $image = $upload_path;
-					sleep(0.2);
+					sleep(0.5);
 					if ($option_resize) {
 						$output = str_replace('.jpg', '_640x480.jpg', $outputfilename . '.' . $extension);
 						$img = new Imagick();
@@ -124,10 +124,10 @@ class ScanQR extends CI_Controller
 			$data_path = date("dmY");
 			$files_name = [];
 			while (sizeof($files_name) <= 7) {
-				sleep(0.8);
+				sleep(1);
 				$files_name = array_diff(scandir($source_path, 1), array('..', '.'));
 			}
-			sleep(0.1);
+
 			if (!is_dir($target_path_large . "\\" . $data_path)) {
 				mkdir($target_path_large . "\\" . $data_path);
 			}
@@ -135,9 +135,10 @@ class ScanQR extends CI_Controller
 			if (!is_dir($target_path_large . "\\" . $data_path . "\\" . $temp_id)) {
 				mkdir($target_path_large . "\\" . $data_path . "\\" . $temp_id);
 			}
-
+			sleep(0.25);
 			for ($i = 0; $i < sizeof($files_name); $i++) {
 				rename($source_path . "\\" . $files_name[$i], $target_path_large . "\\" . $data_path . "\\" . $temp_id . "\\" . $temp_id . '_' . $files_name[$i]);
+
 				if ($option_resize) {
 					if (!is_dir($target_path_small . "\\" . $data_path)) {
 						mkdir($target_path_small . "\\" . $data_path);
@@ -146,7 +147,7 @@ class ScanQR extends CI_Controller
 
 					if (!is_dir($target_path_small . "\\" . $data_path . "\\" . $temp_id)) {
 						mkdir($target_path_small . "\\" . $data_path . "\\" . $temp_id);
-						sleep(0.1);
+						sleep(0.2);
 					}
 
 					$output = str_replace('.jpg', '_640x480.jpg', $temp_id . '_' . $files_name[$i]);
@@ -176,8 +177,9 @@ class ScanQR extends CI_Controller
 		try {
 			$qr_id = $this->input->post('qr_id');
 			$data_path = date("dmY");
-			$target_path_large = 'D:\Images\large';
-			$files_name = array_diff(scandir($target_path_large . '\\' . $data_path . '\\' . $qr_id, 1), array('..', '.'));
+			// $target_path_large = 'D:\Images\large';
+			$target_path_small = 'D:\Images\small';
+			$files_name = array_diff(scandir($target_path_small . '\\' . $data_path . '\\' . $qr_id, 1), array('..', '.'));
 			echo json_encode(['messages' => $files_name]);
 		} catch (\Throwable $th) {
 			echo json_encode(['messages' => 'error']);
@@ -188,14 +190,16 @@ class ScanQR extends CI_Controller
 	{
 		error_reporting(E_ERROR | E_PARSE);
 		$data_path = date("dmY");
-		$target_path_large = 'D:\Images\large';
-		$filename = $target_path_large . '\\' . $data_path . '\\' . $path_id . '\\' . $imagename;
+		// $target_path_large = 'D:\Images\large';
+		$target_path_small = 'D:\Images\small';
+		$filename = $target_path_small . '\\' . $data_path . '\\' . $path_id . '\\' . $imagename;
 		$handle = fopen($filename, "rb");
 		$contents = fread($handle, filesize($filename));
 		fclose($handle);
 		header("content-type: image/jpg");
 		echo $contents;
 	}
+
 
 	public function take_a_photo_udp()
 	{
